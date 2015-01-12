@@ -1,4 +1,4 @@
-# affordance-master-thesis
+# affordance
 The code repository for the Affordance++ master thesis
 
 ### Install instructions
