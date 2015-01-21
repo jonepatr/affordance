@@ -3,3 +3,7 @@ body { padding-top: 70px; }
 .back-canvas { display: none;}
 #bs-example-navbar-collapse-1 a.running{ background-color: #47a447; color: #fff;}
 #bs-example-navbar-collapse-1 a.current_user { font-weight:bold }
+.saved_gestures { float: left; margin-top: 8px; }
+.save_gesture_input_container { float: left; margin-top: 3px;  margin-right: 10px; }
+#new_user_profile { width: 158px; margin-left: 2px; margin-right: 2px; float: left; }
+#user_dropdown { width: 140px; text-align: right; }

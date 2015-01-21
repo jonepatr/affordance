@@ -214,22 +214,22 @@ class Arduino(threading.Thread):
     def subscribe(self, callback):
         self.subscribers.append(callback)
 
-    # def run(self):
-#         """docstring for run"""
-#         while True:
-#
-#           if not self.no_serial:
-#             #print(self.ser.readline(1))
-#             data = self.ser.readline(1024)
-#             if data:
-#                 if self.arduino_value_callback != None:
-#                   self.arduino_value_callback(data.decode("utf-8").replace('\n', '').replace('\r', ''))
-#           if not self.no_serial_cap:
-#               data = self.ser_capacitive.readline(1)
-#               if data and data != bytes("\n", "utf-8") and data != bytes("\r", "utf-8") and not self.stop:
-#                   for subscriber in self.subscribers:
-#                       subscriber(data.decode("utf-8").replace('\n', '').replace('\r', ''))
-#           time.sleep(0.01)
+    def run(self):
+        """docstring for run"""
+        while True:
+
+          if not self.no_serial:
+            #print(self.ser.readline(1))
+            data = self.ser.readline(1024)
+            if data:
+                if self.arduino_value_callback != None:
+                  self.arduino_value_callback(data.decode("utf-8").replace('\n', '').replace('\r', ''))
+          if not self.no_serial_cap:
+              data = self.ser_capacitive.readline(1)
+              if data and data != bytes("\n", "utf-8") and data != bytes("\r", "utf-8") and not self.stop:
+                  for subscriber in self.subscribers:
+                      subscriber(data.decode("utf-8").replace('\n', '').replace('\r', ''))
+          time.sleep(0.01)
 
 
 

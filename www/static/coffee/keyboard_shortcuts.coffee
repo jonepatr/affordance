@@ -3,20 +3,20 @@ window.keyboardShortcuts = (ws) ->
   $(document).on("keydown", (e) ->
     if not keyAllowed[e.which]
       keyAllowed[e.which] = true
-      stuff = String.fromCharCode(event.keyCode).toLowerCase()  
+      stuff = String.fromCharCode(event.keyCode).toLowerCase()
       if /^[1-9]+$/i.test(stuff)
         selectedObject = $("#muscle_controller [data-shortkey=" + String.fromCharCode(event.keyCode).toLowerCase() + "]")
         if selectedObject.data("button-value")
           $("#muscle_controller .speed_control").removeClass("active");
       if /^[a-z1-9]+$/i.test(stuff)
-        selectedObject = $("#muscle_controller [data-shortkey=" + String.fromCharCode(event.keyCode).toLowerCase() + "]"); 
+        selectedObject = $("#muscle_controller [data-shortkey=" + String.fromCharCode(event.keyCode).toLowerCase() + "]");
         button_value = selectedObject.data("button-value")
         if button_value
           selectedObject.addClass("active")
           ws.send(["muscle_control", button_value, true])
       if e.which == 13
         $("#run_button").trigger("click")
-      if e.which == 48 or e.which == 189 or e.which == 187 or e.which == 219 or e.which == 221 # 0, -, =, p, [, ]  
+      if e.which == 48 or e.which == 189 or e.which == 187 or e.which == 219 or e.which == 221 # 0, -, =, p, [, ]
         selectedObject = $("#muscle_controller [data-shortkey="+stuff+"]")
         selectedObject.addClass("active")
         ws.send(["muscle_control", selectedObject.data("button-value"), true])
@@ -32,9 +32,7 @@ window.keyboardShortcuts = (ws) ->
         ws.send(["muscle_control", button_value, false])
     if e.which == 48 or e.which == 189 or e.which == 187 or e.which == 219 or e.which == 221
       $("#muscle_controller [data-shortkey="+stuff+"]").removeClass("active")
-      
   )
-
 
   $("#muscle_controller button").on("mousedown", ->
     $("#muscle_controller .speed_control").removeClass("active")

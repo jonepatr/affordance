@@ -1,362 +1,304 @@
 <html>
-<head>
-  <link rel="stylesheet" href="{{ static_url("css/bootstrap.min.css") }}" type="text/css"/>
-  <link rel="stylesheet" href="{{ static_url("css/custom-theme/jquery-ui-1.10.0.custom.css") }}" type="text/css"/>
-  <link rel="stylesheet" href="{{ static_url("css/main.css") }}" type="text/css"/>
-  <script src="{{ static_url("js/lib/jquery-2.1.0.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{ static_url("js/lib/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{ static_url("js/lib/jquery-ui-1.10.4.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{ static_url("js/lib/lodash.min.js") }}" type="text/javascript" charset="utf-8"></script>
-  <script src="{{ static_url("js/compiled.js") }}" type="text/javascript" charset="utf-8"></script>
-  
-	<script type="text/javascript">
-	<!--
-  // var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
-  // if (document.location.protocol == 'https:')
-  //   unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
-  // document.write('<script type="text\/javascript" src="' + unityObjectUrl + '"><\/script>');
-	-->
-	</script>
-  <script src="{{ static_url("js/main.js") }}" type="text/javascript" charset="utf-8"></script>
+  <head>
+    <link rel="stylesheet" href="{{ static_url("css/bootstrap.min.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/custom-theme/jquery-ui-1.10.0.custom.css") }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ static_url("css/main.css") }}" type="text/css"/>
 
+    <script src="{{ static_url("js/lib/jquery-2.1.0.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ static_url("js/lib/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ static_url("js/lib/jquery-ui-1.10.4.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ static_url("js/lib/lodash.min.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ static_url("js/compiled.js") }}" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ static_url("js/main.js") }}" type="text/javascript" charset="utf-8"></script>
 
-
-        <script id="ems-template" type="text/template">
-            <div class="col-xs-6 channel_wrapper" id="<%= id%>_calib" data-channel-id="<%= id%>">                      
-            <h3><%= name%></h3>
-            <div class="form-group">
-              <button class="btn btn-default reset_button">Reset</button>
-            </div>
-            <div class="form-group">
-              <div class="xs-col-4">
-                <span class="min_limit">0</span><span class="max_limit pull-right">100</span>
-              </div>              
-              <div class="slider ems_limit"></div>              
-            </div>
-            <div class="form-group">
-              <div class="xs-col-4">
-                <span class="ems_value_span">0</span>
-              </div>
-
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-btn">
-                      <label class="btn btn-primary" style="width: 100px;">
-                        <input type="checkbox" name="options" class="ems_on_off"> <span>EMS OFF</span>
-                      </label>
-                    </div>
-                  
-                      <input type="text" class="form-control" style="width: 80px; text-align: right;" placeholder="Millieconds">
-                 
-                  
-                  </div>
-
-                
-              </div>
-              <div class="slider ems_value"></div> 
-            </div>
-            </div>
-        </script>
-
-    <script id="relay-template" type="text/template">
-        <div class="col-xs-6">   
+    <script id="ems-template" type="text/template">
+      <div class="col-xs-6 channel_wrapper" id="<%= id%>_calib" data-channel-id="<%= id%>">
         <h3><%= name%></h3>
         <div class="form-group">
-                             <div class="btn-group" data-toggle="buttons">
-                               <label class="btn btn-primary">
-                                 <input type="radio" name="options" id="option1"> Digipot
-                               </label>
-                               <label class="btn btn-primary active">
-                                 <input type="radio" name="options" id="option2" cheked> Relay
-                               </label>
-                             </div>
-                           </div>
-                           <div class="form-group">
-                             <label class="btn btn-primary">
-                               <input type="checkbox" name="options" class="open_relay button-button"> <span>Relay closed</span>
-                             </label>
-                           </div>
+          <button class="btn btn-default reset_button">Reset</button>
+        </div>
+        <div class="form-group">
+          <div class="xs-col-4">
+            <span class="min_limit">0</span><span class="max_limit pull-right">100</span>
+          </div>
+          <div class="slider ems_limit"></div>
+        </div>
+        <div class="form-group">
+          <div class="xs-col-4">
+            <span class="ems_value_span">0</span>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <label class="btn btn-primary" style="width: 100px;">
+                  <input type="checkbox" name="options" class="ems_on_off" />
+                  <span>EMS OFF</span>
+                </label>
+              </div>
+              <input type="text" class="form-control" style="width: 80px; text-align: right;" placeholder="Millieconds" />
+            </div>
+          </div>
+          <div class="slider ems_value"></div>
+        </div>
+      </div>
     </script>
-  
-  
-   <script id="colliders-template" type="text/template">
+
+    <script id="relay-template" type="text/template">
+      <div class="col-xs-6">
+        <h3><%= name%></h3>
+        <div class="form-group">
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="option1" /> Digipot
+            </label>
+            <label class="btn btn-primary active">
+              <input type="radio" name="options" id="option2" cheked /> Relay
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="btn btn-primary">
+            <input type="checkbox" name="options" class="open_relay button-button" />
+            <span>Relay closed</span>
+          </label>
+        </div>
+      </div>
+    </script>
+
+    <script id="colliders-template" type="text/template">
       <div class="panel panel-default dynamic-accordion" data-envelope-id="<%= id %>">
         <div class="panel-heading">
           <h4 class="panel-title">
             <a data-toggle="collapse" data-parent="#accordion" href="#<%= id %>">
-            <%= name %>
+              <%= name %>
             </a>
           </h4>
         </div>
         <div id="<%= id %>" class="panel-collapse collapse">
           <div class="panel-body">
-           <div class="row">
-                <div id="<%= name %>">
-                    
-                </div>
-           </div>          
+            <div class="row">
+              <div id="<%= name %>"></div>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-  </script>
-  
-  <script id="curve-editor-template" type="text/template">
-    <div style="padding: 10px">
+    </script>
 
-
-          <!-- <button type="button" class="btn btn-danger clear">Clear all points</button><br/> -->
-          <% if (name == "gesture-editor") { %>
+    <script id="curve-editor-template" type="text/template">
+      <div style="padding: 10px">
+        <% if (name == "gesture-editor") { %>
           <div style="width: 100%; float: left; margin-bottom: 15px; margin-top: 15px;">
-          <div style="width: 100%; float: left; margin-bottom: 10px">
-            <select class="saved_gestures"  style="float: left; margin-top: 8px"></select>
-          </div>  
-          <div class="save_gesture_input_container" style="float: left; margin-top: 3px;  margin-right: 10px">
-            <input type="text" name="save_gesture" value="" class="save_gesture" placeholder="Gesture name">
-          </div>          
-          <button class="btn btn-primary save_gesture_button"  style="float: left;">Save gesture</button>
-        </div>
+            <div style="width: 100%; float: left; margin-bottom: 10px">
+              <select class="saved_gestures"></select>
+            </div>
+            <div class="save_gesture_input_container">
+              <input type="text" name="save_gesture" value="" class="save_gesture" placeholder="Gesture name" />
+            </div>
+            <button class="btn btn-primary save_gesture_button"  style="float: left;">Save gesture</button>
+          </div>
           <div class="form-group">
-              <div class="input-group">
-                  <div class="input-group-btn">
-                      <label class="btn btn-primary" style="width: 100px;">
-                          <input type="checkbox" name="options" class="button-button test_gesture_ems"> <span>Test gesture</span>
-                      </label>
-                  </div>
-                  <input type="text" class="form-control time_for_gesture_test" placeholder="Millieconds"> 
+            <div class="input-group">
+              <div class="input-group-btn">
+                <label class="btn btn-primary" style="width: 100px;">
+                  <input type="checkbox" name="options" class="button-button test_gesture_ems" />
+                  <span>Test gesture</span>
+                </label>
               </div>
+              <input type="text" class="form-control time_for_gesture_test" placeholder="Millieconds" />
+            </div>
           </div>
-          <% } else { %>
-              <b>Gesture to perform</b><br>
-              <select class="envelope_gestures"></select><br>
-              
-              <b>Action type</b><br>
-              Time <input type="radio" name="action_type" value="time" checked /> 
-              Distance <input type="radio"  value="distance" name="action_type" /><br>
-              
-        
-              
-              <b>Duration</b><br>
-              <input type="text" name="gesture_time_duration" value="" id="gesture_time_duration" placeholder="duration">
-              <br>                          
-              <b>Extra condition</b><br>
-              <input type="text" name="gesture_extra_condition" value="" id="gesture_extra_condition" placeholder="extra conditions">
-              <br>
-
-          <% }  %>
-          <button class="pull-right btn btn-danger remove-gesture" style="display: none;">Remove gesture</button>
-          <label> <input type="radio" name="mode" class="addMode" checked/> add points</label>
-          <label> <input type="radio" name="mode" class="selectMode" /> move points</label>
-          <label> <input type="radio" name="mode" class="removeMode" /> remove points</label>
-          <button class="btn btn-danger reset-points" style="margin-left: 10px">Reset</button><br /><br>
-          <div class="curve_mode_container"></div>                    
-
-
-      <div class="col">
+        <% } else { %>
+          <b>Gesture to perform</b><br>
+          <select class="envelope_gestures"></select>
+          <br />
+          <b>Action type</b>
+          <br />
+          Time <input type="radio" name="action_type" value="time" checked />
+          Distance <input type="radio"  value="distance" name="action_type" />
+          <br />
+          <b>Duration</b>
+          <br />
+          <input type="text" name="gesture_time_duration" value="" id="gesture_time_duration" placeholder="duration" />
+          <br />
+          <b>Extra condition</b>
+          <br />
+          <input type="text" name="gesture_extra_condition" value="" id="gesture_extra_condition" placeholder="extra conditions" />
+          <br />
+        <% }  %>
+        <button class="pull-right btn btn-danger remove-gesture" style="display: none;">Remove gesture</button>
+        <label> <input type="radio" name="mode" class="addMode" checked /> add points</label>
+        <label> <input type="radio" name="mode" class="selectMode" /> move points</label>
+        <label> <input type="radio" name="mode" class="removeMode" /> remove points</label>
+        <button class="btn btn-danger reset-points" style="margin-left: 10px">Reset</button>
+        <br />
+        <br />
+        <div class="curve_mode_container"></div>
+        <div class="col">
           <canvas class="paintme" width="<%= width %>" height="<%= height %>"></canvas>
+        </div>
+        <br />
+        <% if (name != "gesture-editor") { %>
+          <button class="btn btn-primary save_envelope_button">Save Envelope</button>
+        <% }  %>
+        <br />
       </div>
-      <br>
-      <% if (name != "gesture-editor") { %>
-      <button class="btn btn-primary save_envelope_button">Save Envelope</button>
-      <% }  %>
-      <br>
-    </div>
-  </script>
-  
-  
-  
-</head>
+    </script>
+  </head>
 
-<body>
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Affordance++</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="#run" data-toggle="tab">Modes</a></li>
-          <li class="active"><a href="#calibrate" data-toggle="tab">Calibration</a></li>       
-          <li><a href="#gestures" data-toggle="tab">Gesture editor</a></li>
-          <li><a href="#muscle_control" data-toggle="tab">Muscle control</a></li>          
-          <li><a href="#bounding_box" data-toggle="tab">Bounding box linking</a></li>          
-        </ul>
-        
-        <ul class="nav navbar-nav navbar-right">
-          <li style="color: #aaa; padding-top: 15px">
-            <div style="float: left">EMS1:</div> 
-            <div style="width: 50px; float: left" id="ems1_data">X</div> 
-            
-            <div style="float: left">EMS2:</div> 
-            <div style="width: 50px; float: left" id="ems2_data">Y</div>
-          </li>
-          <li><a href="#" id="run_button">Run</a></li>         
-          <li class="dropdown"  id="user_dropdown" style="width: 140px; text-align: right;">
-            <a href="#" class="dropdown-toggle" id="current_user_dropdown" data-toggle="dropdown"><span>General user</span> <b class="caret"></b></a>
-            <ul class="dropdown-menu" style="text-align: left">
-              <li id="new_user_list_item">
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Affordance++</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#run" data-toggle="tab">Modes</a></li>
+            <li class="active"><a href="#calibrate" data-toggle="tab">Calibration</a></li>
+            <li><a href="#gestures" data-toggle="tab">Gesture editor</a></li>
+            <li><a href="#muscle_control" data-toggle="tab">Muscle control</a></li>
+            <li><a href="#bounding_box" data-toggle="tab">Bounding box linking</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li style="color: #aaa; padding-top: 15px">
+              <div style="float: left">EMS1:</div>
+              <div style="width: 50px; float: left" id="ems1_data">X</div>
+              <div style="float: left">EMS2:</div>
+              <div style="width: 50px; float: left" id="ems2_data">Y</div>
+            </li>
+            <li><a href="#" id="run_button">Run</a></li>
+            <li class="dropdown"  id="user_dropdown">
+              <a href="#" class="dropdown-toggle" id="current_user_dropdown" data-toggle="dropdown">
+                <span>General user</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" style="text-align: left">
+                <li id="new_user_list_item">
                   <form id="new_user_form">
-                  <input tytpe="text" id="new_user_profile" style="width: 158px; margin-left: 2px; margin-right: 2px; float: left"  class="form-control"  placeholder="New user" />                   </form>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-  
-  <div class="container">
-    <div class="row">
-      <div class="tab-content">
-        <div class="tab-pane" id="run">
-          <!-- <div id="teapot_buttons">
-            <h3>Teapot</h3>
-            <button class="btn btn-primary" data-button-value="1">none</button>
-            <button class="btn btn-primary" data-button-value="2">hot</button>
-          </div>
+                    <input tytpe="text" id="new_user_profile"  class="form-control"  placeholder="New user" />
+                  </form>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-          <div id="ikea_buttons">
-            <h3>Ikea</h3>
-            <button class="btn btn-primary" data-button-value="1">neutral</button>
-            <button class="btn btn-primary" data-button-value="2">Plastic screws</button>
-            <button class="btn btn-primary" data-button-value="3">Metal screws</button>
-            <button class="btn btn-primary" data-button-value="4">Knob</button>
-            <button class="btn btn-primary" data-button-value="5">Philips screwdriver</button>
-            <button class="btn btn-primary" data-button-value="6">Flat screwdriver</button>
-            <button class="btn btn-primary" data-button-value="7">Hammer</button>
-          </div> -->
+    <div class="container">
+      <div class="row">
+        <div class="tab-content">
+          <div class="tab-pane" id="run">
+            <div id="teapot_buttons">
+              <h3>Teapot</h3>
+              <button class="btn btn-primary" data-button-value="teapot_1">none</button>
+              <button class="btn btn-primary" data-button-value="teapot_2">hot</button>
+            </div>
 
-          
-          <!-- <button id="run_button" class="btn btn-primary pull-right">Run</button> -->
-          <div class="hello">
-            <h3>Door</h3>
-            <div class="btn-group">
-              <label class="btn btn-primary">
-                <input type="radio" name="aoptions" id="aoption1" class="radios button-button" value="k"> Please knock
-              </label>          
-              <label class="btn btn-primary active">
-                <input type="radio" name="aoptions" id="aoption3" class="radios button-button" value="e"> Enter
-              </label>
+            <div id="ikea_buttons">
+              <h3>Shelf assembly</h3>
+              <button class="btn btn-primary" data-button-value="ikea_1">neutral</button>
+              <button class="btn btn-primary" data-button-value="ikea_2">Plastic screws</button>
+              <button class="btn btn-primary" data-button-value="ikea_3">Metal screws</button>
+              <button class="btn btn-primary" data-button-value="ikea_4">Knob</button>
+              <button class="btn btn-primary" data-button-value="ikea_5">Philips screwdriver</button>
+              <button class="btn btn-primary" data-button-value="ikea_6">Flat screwdriver</button>
+              <button class="btn btn-primary" data-button-value="ikea_7">Hammer</button>
+            </div> -->
+
+            <div class="door_buttons">
+              <h3>Door</h3>
+              <div class="btn-group">
+                <label class="btn btn-primary">
+                  <input type="radio" name="aoptions" id="aoption1" class="radios button-button" value="door_1"> Please knock
+                </label>
+                <label class="btn btn-primary active">
+                  <input type="radio" name="aoptions" id="aoption3" class="radios button-button" value="door_2"> Enter
+                </label>
+              </div>
             </div>
           </div>
-          
-          
-          
-          <!-- <div id="unityPlayer">
-                  <div class="missing">
-                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now!">
-                      <img alt="Unity Web Player. Install now!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
-                    </a>
-                  </div>
-                  <div class="broken">
-                    <a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install.">
-                      <img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63" />
-                    </a>
-                  </div>
-                </div> -->
-        </div>
-        <div class="tab-pane active" id="calibrate">
-          <h1>Calibration</h1>
-         <div class="panel-body" id="actuation_panel">
-          
 
-         </div>
-          
-          
-          
+          <div class="tab-pane active" id="calibrate">
+            <h1>Calibration</h1>
+            <div class="panel-body" id="actuation_panel"></div>
+          </div>
 
-        </div>
-
-        
-
-        <div class="tab-pane" id="bounding_box">
+          <div class="tab-pane" id="bounding_box">
             <h1>Gesture editor</h1>
-            <div id="bounding_box-editor">                            
-                <div class="panel-group" id="accordion2">
+            <div id="bounding_box-editor">
+              <div class="panel-group" id="accordion2"></div>
+            </div>
+          </div>
+
+          <div class="tab-pane" id="gestures">
+            <div id="gesture-editor"></div>
+          </div>
+
+          <div class="tab-pane" id="muscle_control">
+            <div id="muscle_controller">
+              <h3>Muscle controller</h3>
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <h4>Gestures</h4>
+                    <button class="btn btn-primary" data-shortkey="l"  data-button-value="ems1">
+                      Lower flexor&nbsp;&nbsp;&nbsp;&nbsp;L
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="u"  data-button-value="ems1">
+                      Upper flexor&nbsp;&nbsp;&nbsp;&nbsp;U
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="b"  data-button-value="ems1">
+                      Biceps&nbsp;&nbsp;&nbsp;&nbsp;B
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="x"  data-button-value="ems1">
+                      Xross&nbsp;&nbsp;&nbsp;&nbsp;X
+                    </button><br><br>
+                    <button class="btn btn-primary" data-shortkey="e"  data-button-value="ems3">
+                      Extensor&nbsp;&nbsp;&nbsp;&nbsp;E
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="t"  data-button-value="ems3">
+                      Thumb&nbsp;&nbsp;&nbsp;&nbsp;T
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="s"  data-button-value="ems3">
+                      Sideways&nbsp;&nbsp;&nbsp;&nbsp;S
+                    </button>
+                    <button class="btn btn-primary" data-shortkey="d"  data-button-value="ems4">
+                      Door relay&nbsp;&nbsp;&nbsp;&nbsp;d
+                    </button>
                   </div>
-            </div>
-        </div>
-        <div class="tab-pane" id="gestures">
-            <div id="gesture-editor">                            
-                
-            </div>
-        </div>
+                  <div class="col-xs-6">
+                    <h4>Speed</h4>
+                    <button class="btn btn-primary speed_control" data-shortkey="1" data-button-value="1">1</button>
+                    <button class="btn btn-primary speed_control" data-shortkey="2" data-button-value="2">2</button>
+                    <button class="btn btn-primary speed_control" data-shortkey="3" data-button-value="3">3</button>
+                    <button class="btn btn-primary speed_control" data-shortkey="4" data-button-value="4">4</button>
 
-        
-        <div class="tab-pane" id="muscle_control">
+                    <h4>Strength</h4>
+                    <h5>A: <span id="ems1_strength_span">40</span></h5>
+                    <button class="btn btn-primary strength_control" data-shortkey="0" data-button-value="0">-&nbsp;&nbsp;&nbsp;&nbsp;(0)</button>
+                    <button class="btn btn-primary strength_control" data-shortkey="½" data-button-value="+">+&nbsp;&nbsp;&nbsp;&nbsp;(-)</button>
+                    <button class="btn btn-primary strength_control" data-shortkey="»" data-button-value="-">0&nbsp;&nbsp;&nbsp;&nbsp;(=)</button>
 
-          <div id="muscle_controller">
-            <h3>Muscle controller</h3>
-            <div class="col-xs-8">                         
-              <div class="row">
-                
-              
-              <div class="col-xs-6">
-                <h4>Gestures</h4>               
-                <button class="btn btn-primary" data-shortkey="l"  data-button-value="ems1">
-                  Lower flexor&nbsp;&nbsp;&nbsp;&nbsp;L
-                </button>
-                <button class="btn btn-primary" data-shortkey="u"  data-button-value="ems1">
-                  Upper flexor&nbsp;&nbsp;&nbsp;&nbsp;U
-                </button>
-                <button class="btn btn-primary" data-shortkey="b"  data-button-value="ems1">
-                  Biceps&nbsp;&nbsp;&nbsp;&nbsp;B
-                </button>
-                <button class="btn btn-primary" data-shortkey="x"  data-button-value="ems1">
-                  Xross&nbsp;&nbsp;&nbsp;&nbsp;X
-                </button><br><br>
-                <button class="btn btn-primary" data-shortkey="e"  data-button-value="ems3">
-                  Extensor&nbsp;&nbsp;&nbsp;&nbsp;E
-                </button>
-                <button class="btn btn-primary" data-shortkey="t"  data-button-value="ems3">
-                  Thumb&nbsp;&nbsp;&nbsp;&nbsp;T
-                </button>
-                <button class="btn btn-primary" data-shortkey="s"  data-button-value="ems3">
-                  Sideways&nbsp;&nbsp;&nbsp;&nbsp;S
-                </button>
-                <button class="btn btn-primary" data-shortkey="d"  data-button-value="ems4">
-                  Door relay&nbsp;&nbsp;&nbsp;&nbsp;d
-                </button>
+                    <h5>B: <span id="ems2_strength_span">40</span></h5>
+                    <button class="btn btn-primary strength_control" data-shortkey="p" data-button-value="p">-&nbsp;&nbsp;&nbsp;&nbsp;(p)</button>
+                    <button class="btn btn-primary strength_control" data-shortkey="û" data-button-value="]">+&nbsp;&nbsp;&nbsp;&nbsp;( [ )</button>
+                    <button class="btn btn-primary strength_control" data-shortkey="ý" data-button-value="[">0&nbsp;&nbsp;&nbsp;&nbsp;( ] )</button>
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12"></div>
+                </div>
               </div>
-              <div class="col-xs-6">
-                <h4>Speed</h4>
-                <button class="btn btn-primary speed_control" data-shortkey="1" data-button-value="1">1</button>
-                <button class="btn btn-primary speed_control" data-shortkey="2" data-button-value="2">2</button>
-                <button class="btn btn-primary speed_control" data-shortkey="3" data-button-value="3">3</button>
-                <button class="btn btn-primary speed_control" data-shortkey="4" data-button-value="4">4</button>
-                
-                <h4>Strength</h4>
-                <h5>A: <span id="ems1_strength_span">40</span></h5>
-                <button class="btn btn-primary strength_control" data-shortkey="0" data-button-value="0">-&nbsp;&nbsp;&nbsp;&nbsp;(0)</button>
-                <button class="btn btn-primary strength_control" data-shortkey="½" data-button-value="+">+&nbsp;&nbsp;&nbsp;&nbsp;(-)</button>
-                <button class="btn btn-primary strength_control" data-shortkey="»" data-button-value="-">0&nbsp;&nbsp;&nbsp;&nbsp;(=)</button>
-                
-                <h5>B: <span id="ems2_strength_span">40</span></h5>
-                <button class="btn btn-primary strength_control" data-shortkey="p" data-button-value="p">-&nbsp;&nbsp;&nbsp;&nbsp;(p)</button>
-                <button class="btn btn-primary strength_control" data-shortkey="û" data-button-value="]">+&nbsp;&nbsp;&nbsp;&nbsp;( [ )</button>
-                <button class="btn btn-primary strength_control" data-shortkey="ý" data-button-value="[">0&nbsp;&nbsp;&nbsp;&nbsp;( ] )</button>
-                
-              </div>
-              </div>
-              <div class="row">
-              <div class="col-xs-12">
-    
-              </div>
-              </div>
-              
-            </div>
               <div class="col-xs-4">
                 <h4>EMS Positions</h4>
-              
                 <h5>Squeeze</h5>
                 <ul>
                   <li>1: Thumb</li>
@@ -381,39 +323,10 @@
                   <li>1: Weird stuff on back of forearm</li>
                 </ul>
               </div>
-            
-            
-            <!-- <button class="btn btn-primary" data-button-value="6">Action&nbsp;&nbsp;&nbsp;&nbsp;d</button> <br><br>
-            <button class="btn btn-primary" data-button-value="7">Action&nbsp;&nbsp;&nbsp;&nbsp;z</button>
-            <button class="btn btn-primary" data-button-value="8">Action&nbsp;&nbsp;&nbsp;&nbsp;x</button>
-            <button class="btn btn-primary" data-button-value="9">Action&nbsp;&nbsp;&nbsp;&nbsp;c</button> <br><br>
-            <button class="btn btn-primary" data-button-value="10">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="11">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="12">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="13">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="14">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="15">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-            <button class="btn btn-primary" data-button-value="16">Action&nbsp;&nbsp;&nbsp;&nbsp;</button>
-             -->
-            
-            
-            
-                 
-            
-            
-            
-            
-            
-            
+            </div>
           </div>
-
-          
         </div>
       </div>
     </div>
-    
-  </div>
-
-
-</body>
+  </body>
 </html>
